@@ -1,23 +1,23 @@
 package org.firstinspires.ftc.teamcode;
 
+
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
 
 public class Robot {
-    DcMotor leftFront;
-    DcMotor leftRear;
-    DcMotor rightFront;
-    DcMotor rightRear;
+    private ElapsedTime runtime = new ElapsedTime();
+    DcMotor leftFront = null;
+    DcMotor leftRear = null;
+    DcMotor rightFront = null;
+    DcMotor rightRear = null;
+    DcMotor leftSlide = null;
+    DcMotor rightSlide = null;
     HardwareMap hardwareMap;
-    DcMotor leftSlide;
-    DcMotor rightSlide;
-
-    public Robot(HardwareMap hardwareMap) {
-        this.hardwareMap = hardwareMap;
-    }
-
     public void init() {
+
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
         leftRear = hardwareMap.get(DcMotor.class, "leftRear");
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
@@ -32,4 +32,10 @@ public class Robot {
         rightSlide.setDirection(DcMotorSimple.Direction.FORWARD);
         leftSlide.setDirection(DcMotorSimple.Direction.FORWARD);
     }
+
+    public Robot(HardwareMap hardwareMap) {
+        this.hardwareMap = hardwareMap;
+    }
+
+
 }
