@@ -10,8 +10,8 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 @Config
 public class armSubsystem extends BaseSubsytem {
     //set positions
-    public static double ARM_UP = 0.0;
-    public static double ARM_DOWN = 0.7;
+    public static double ARM_UP = .4;
+    public static double ARM_DOWN = 0.2;
 
     //create hardware variables
     public Servo armLeft = null;
@@ -28,15 +28,9 @@ public class armSubsystem extends BaseSubsytem {
         super.init(hardwareMap, telemetry);
         armLeft = hardwareMap.get(Servo.class, "armLeft");
         armRight = hardwareMap.get(Servo.class, "armRight");
+        armLeft.setDirection(Servo.Direction.REVERSE);
+
     }
-//    public void setArmUp(){
-//        armLeft.setPosition(ARM_UP);
-//        armRight.setPosition(ARM_UP);
-//    }
-//    public void setArmDown(){
-//        armLeft.setPosition(ARM_DOWN);
-//        armRight.setPosition(ARM_DOWN);
-//    }
     public void defaultCommand(Gamepad gamepad1, Gamepad gamepad2) {
         super.gamepadInit(gamepad1, gamepad2);
         //up

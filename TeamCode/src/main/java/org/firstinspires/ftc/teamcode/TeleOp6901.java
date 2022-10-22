@@ -64,24 +64,24 @@ public class TeleOp6901 extends OpMode {
         //arm positions
         //up
         if (gamepad2.a) {
-//            arm.setArmUp();
-            arm.armLeft.setPosition(.5);
-            arm.armRight.setPosition(.5);
-        } else if (gamepad2.b) {
-//            arm.setArmDown();
-            arm.armLeft.setPosition(0);
-            arm.armRight.setPosition(0);
+            arm.armLeft.setPosition(armSubsystem.ARM_UP);
+            arm.armRight.setPosition(armSubsystem.ARM_UP);
+        }
+        if (gamepad2.b) {
+            arm.armLeft.setPosition(armSubsystem.ARM_DOWN);
+            arm.armRight.setPosition(armSubsystem.ARM_DOWN);
         }
 
         //claw positions
+        //close
         if (gamepad2.x) {
-            claw.clawLeft.setPosition(clawSubsystem.CLAW_OPEN);
-            claw.clawRight.setPosition(clawSubsystem.CLAW_OPEN);
+            claw.clawLeft.setPosition(.2);
+            claw.clawRight.setPosition(.9);
         }
-        //down
+        //open
         if (gamepad2.y) {
-            claw.clawLeft.setPosition(clawSubsystem.ClAW_CLOSED);
-            claw.clawRight.setPosition(clawSubsystem.ClAW_CLOSED);
+            claw.clawLeft.setPosition(.5);
+            claw.clawRight.setPosition(0);
         }
     }
 }

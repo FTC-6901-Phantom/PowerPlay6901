@@ -10,8 +10,6 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 @Config
 public class clawSubsystem extends BaseSubsytem{
     //values
-    public static double CLAW_OPEN = 0.8;
-    public static double ClAW_CLOSED = 0.4;
 
     // create hardware variables
     public Servo clawLeft = null;
@@ -26,23 +24,21 @@ public class clawSubsystem extends BaseSubsytem{
     public void init(HardwareMap hardwareMap, Telemetry telemetry) {
         clawLeft = hardwareMap.get(Servo.class, "clawLeft");
         clawRight = hardwareMap.get(Servo.class, "clawRight");
+        clawLeft.setDirection(Servo.Direction.REVERSE);
+
+
     }
     public void defaultCommand(Gamepad gamepad1, Gamepad gamepad2) {
         super.gamepadInit(gamepad1, gamepad2);
-        //up
+        //close
         if (gamepad2.x){
-            clawLeft.setPosition(CLAW_OPEN);
-            clawRight.setPosition(CLAW_OPEN);
+            clawLeft.setPosition(.3);
+            clawRight.setPosition(.9);
         }
-        //down
-        if (gamepad2.x){
-            clawLeft.setPosition(ClAW_CLOSED);
-            clawRight.setPosition(ClAW_CLOSED);
+        //open
+        if (gamepad2.y){
+            clawLeft.setPosition(.5);
+            clawRight.setPosition(0);
         }
-        clawLeft.setPosition(CLAW_OPEN);
-        clawRight.setPosition(CLAW_OPEN);
-        clawLeft.setPosition(ClAW_CLOSED);
-        clawRight.setPosition(ClAW_CLOSED);
-
     }
 }
