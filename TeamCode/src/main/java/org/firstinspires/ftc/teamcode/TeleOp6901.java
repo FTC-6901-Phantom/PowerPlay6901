@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.subsystems.clawSubsystem;
 
 @TeleOp (name = "TeleOp6901")
 public class TeleOp6901 extends OpMode {
-    Robot robot;
+    Robot robot = new Robot(hardwareMap);
 
     //declare subsystems
     armSubsystem arm = new armSubsystem();
@@ -65,14 +65,12 @@ public class TeleOp6901 extends OpMode {
         //up
         if (gamepad2.a) {
 //            arm.setArmUp();
-            arm.armLeft.setPosition(armSubsystem.ARM_UP);
-            arm.armRight.setPosition(armSubsystem.ARM_UP);
-        }
-        //rest
-        else if (gamepad2.b) {
+            arm.armLeft.setPosition(.5);
+            arm.armRight.setPosition(.5);
+        } else if (gamepad2.b) {
 //            arm.setArmDown();
-            arm.armLeft.setPosition(armSubsystem.ARM_DOWN);
-            arm.armRight.setPosition(armSubsystem.ARM_DOWN);
+            arm.armLeft.setPosition(0);
+            arm.armRight.setPosition(0);
         }
 
         //claw positions
