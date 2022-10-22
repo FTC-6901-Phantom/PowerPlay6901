@@ -43,18 +43,18 @@ public class TeleOp6901 extends OpMode {
 
         //slide motors
         //up
-        if (gamepad1.dpad_up) {
+        if (gamepad1.dpad_down) {
             robot.leftSlide.setPower(.5);
-            robot.leftSlide.setTargetPosition(150);
+            robot.leftSlide.setTargetPosition(0);
             robot.rightSlide.setPower(.5);
-            robot.rightSlide.setTargetPosition(150);
+            robot.rightSlide.setTargetPosition(0);
         }
         //down
-        else if (gamepad1.dpad_down) {
+        else if (gamepad1.dpad_up) {
             robot.leftSlide.setPower(-.5);
-            robot.leftSlide.setTargetPosition(0);
+            robot.leftSlide.setTargetPosition(150);
             robot.rightSlide.setPower(-.5);
-            robot.rightSlide.setTargetPosition(0);
+            robot.rightSlide.setTargetPosition(150);
         }
         else  {
             robot.leftSlide.setPower(0);
@@ -75,13 +75,13 @@ public class TeleOp6901 extends OpMode {
         //claw positions
         //close
         if (gamepad2.x) {
-            claw.clawLeft.setPosition(.2);
-            claw.clawRight.setPosition(.9);
+            claw.clawLeft.setPosition(0);
+            claw.clawRight.setPosition(0);
         }
         //open
         if (gamepad2.y) {
-            claw.clawLeft.setPosition(.5);
-            claw.clawRight.setPosition(0);
+            claw.clawLeft.setPosition(0.22);
+            claw.clawRight.setPosition(0.17);
         }
     }
 }

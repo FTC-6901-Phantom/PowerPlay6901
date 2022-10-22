@@ -8,23 +8,24 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp
 
 public class ClawTest extends LinearOpMode {
-    private Servo armLeft;
-    private Servo armRight;
+    private Servo clawLeft;
+    private Servo clawRight;
 
     @Override
     public void runOpMode() throws InterruptedException {
-        armLeft = hardwareMap.get(Servo.class, "armLeft");
-        armRight = hardwareMap.get(Servo.class, "armRight");
-        armLeft.setDirection(Servo.Direction.REVERSE);
+        clawLeft = hardwareMap.get(Servo.class, "clawLeft");
+        clawRight = hardwareMap.get(Servo.class, "clawRight");
+        clawLeft.setDirection(Servo.Direction.REVERSE);
         waitForStart();
+        //1 is inward and 0 is outward
         while (opModeIsActive()) {
             if (gamepad1.x) {
-                armLeft.setPosition(1);
-                armRight.setPosition(1);
+                clawLeft.setPosition(1);
+                clawRight.setPosition(1);
             }
             if (gamepad1.y) {
-                armLeft.setPosition(0);
-                armRight.setPosition(0);
+                clawRight.setPosition(0);
+                clawLeft.setPosition(0);
             }
         }
     }

@@ -25,20 +25,19 @@ public class clawSubsystem extends BaseSubsytem{
         clawLeft = hardwareMap.get(Servo.class, "clawLeft");
         clawRight = hardwareMap.get(Servo.class, "clawRight");
         clawLeft.setDirection(Servo.Direction.REVERSE);
-
-
     }
     public void defaultCommand(Gamepad gamepad1, Gamepad gamepad2) {
         super.gamepadInit(gamepad1, gamepad2);
         //close
+        //1 is inward and 0 is outward
         if (gamepad2.x){
-            clawLeft.setPosition(.3);
-            clawRight.setPosition(.9);
+            clawLeft.setPosition(0);
+            clawRight.setPosition(0);
         }
         //open
         if (gamepad2.y){
-            clawLeft.setPosition(.5);
-            clawRight.setPosition(0);
+            clawLeft.setPosition(0.22);
+            clawRight.setPosition(0.17);
         }
     }
 }
