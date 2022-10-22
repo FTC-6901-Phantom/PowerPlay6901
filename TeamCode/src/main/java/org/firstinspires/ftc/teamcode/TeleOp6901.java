@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.subsystems.armSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.clawSubsystem;
@@ -13,17 +15,24 @@ public class TeleOp6901 extends OpMode {
     //declare subsystems
     armSubsystem arm = new armSubsystem();
     clawSubsystem claw = new clawSubsystem();
+//    private Servo armRight, armLeft;
 
     @Override
     public void init() {
         robot = new Robot(hardwareMap);
         robot.init();
-        arm.init(hardwareMap, telemetry);
+        //init subsystems
+//        arm.init(armRight, armLeft, hardwareMap, telemetry);
+        arm.init(hardwareMap,telemetry);
         claw.init(hardwareMap, telemetry);
     }
 
     @Override
     public void loop() {
+
+//        telemetry.addData("Servo1Pos: ",         arm.armRight.getPosition());
+//        telemetry.addData("Servo2Pos: ",         arm.armLeft.getPosition());
+
 
         //power, turning, strafing
         //drive
@@ -41,27 +50,40 @@ public class TeleOp6901 extends OpMode {
             robot.rightSlide.setTargetPosition(150);
         }
         //down
-        if (gamepad1.dpad_down) {
+        else if (gamepad1.dpad_down) {
             robot.leftSlide.setPower(-.5);
             robot.leftSlide.setTargetPosition(0);
             robot.rightSlide.setPower(-.5);
             robot.rightSlide.setTargetPosition(0);
         }
-        if (!gamepad2.dpad_up && !gamepad2.dpad_down) {
+        else  {
             robot.leftSlide.setPower(0);
             robot.rightSlide.setPower(0);
-            //arm positions
         }
+
+        //arm positions
         //up
         if (gamepad2.a) {
-            arm.armLeft.setPosition(0);
-            arm.armRight.setPosition(0);
+//            arm.setArmUp();
+            arm.armLeft.setPosition(armSubsystem.ARM_UP);
+            arm.armRight.setPosition(armSubsystem.ARM_UP);
         }
         //rest
-        if (gamepad2.b) {
-            arm.armLeft.setPosition(0);
-            arm.armRight.setPosition(0);
+        else if (gamepad2.b) {
+//            arm.setArmDown();
+            arm.armLeft.setPosition(armSubsystem.ARM_DOWN);
+            arm.armRight.setPosition(armSubsystem.ARM_DOWN);
         }
+
         //claw positions
+        if (gamepad2.x) {
+            claw.clawLeft.setPosition(clawSubsystem.CLAW_OPEN);
+            claw.clawRight.setPosition(clawSubsystem.CLAW_OPEN);
+        }
+        //down
+        if (gamepad2.y) {
+            claw.clawLeft.setPosition(clawSubsystem.ClAW_CLOSED);
+            claw.clawRight.setPosition(clawSubsystem.ClAW_CLOSED);
+        }
     }
 }

@@ -10,6 +10,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Robot {
     private ElapsedTime runtime = new ElapsedTime();
+    HardwareMap hardwareMap;
+
     DcMotor leftFront = null;
     DcMotor leftRear = null;
     DcMotor rightFront = null;
@@ -20,7 +22,7 @@ public class Robot {
     Servo armRight = null;
     Servo clawLeft = null;
     Servo clawRight = null;
-    HardwareMap hardwareMap;
+
     public void init() {
 
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
@@ -29,6 +31,10 @@ public class Robot {
         rightRear = hardwareMap.get(DcMotor.class, "rightRear");
         leftSlide = hardwareMap.get(DcMotor.class, "leftSlide");
         rightSlide = hardwareMap.get(DcMotor.class, "rightSlide");
+        armLeft = hardwareMap.get(Servo.class, "armLeft");
+        armRight = hardwareMap.get(Servo.class, "armRight");
+        clawLeft = hardwareMap.get(Servo.class, "clawLeft");
+        clawRight = hardwareMap.get(Servo.class, "clawRight");
 
         rightFront.setDirection(DcMotorSimple.Direction.FORWARD);
         rightRear.setDirection(DcMotorSimple.Direction.FORWARD);
